@@ -1,0 +1,21 @@
+##########JOE'S SCREENRC##########
+
+# fix broken termcapinfo in /etc/screenrc
+termcapinfo $TERM 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+
+# full and fixed color support
+attrcolor b ".I"    # allow bold colors - necessary for some reason
+termcapinfo $TERM 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'   # tell screen how to set colors. AB = background, AF=foreground
+defbce on    # use current bg color for erased chars
+
+# don't show copyright page
+startup_message off
+
+# status line (based on this one https://www.kilobitspersecond.com/2014/02/10/understanding-gnu-screens-hardstatus-strings/)
+hardstatus alwayslastline "%{= KW} %H %{= Kw}|%{-} %-Lw%{= bW}%n*%f %t%{-}%+Lw %=%c %Y-%m-%d"
+
+# enable PuTTY scrollback (to do screen scrollback do <C-A><ESC>)
+termcapinfo $TERM ti@:te@
+
+# enable truecolor
+truecolor on
