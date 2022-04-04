@@ -5,5 +5,5 @@ find . -type f -exec chmod 600 {} \;
 
 shopt -s dotglob
 shopt -s extglob
-yes | cp -rf ./!(install.bash,.git) ~/test
+yes | cp -rf ./!(install.bash|.git) ~
 
