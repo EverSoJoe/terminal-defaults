@@ -21,13 +21,13 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# start preffered terminal multiplexer after SSH login
+# start preffered terminal multiplexer after login
 termult="tmux"
 
-if ([ -z "$TMUX" ] || [ "$TERM" != "screen" ]) && [ "$SSH_TTY" ] && [ "$termult" != "none" ]; then
+if ([ -z "$TMUX" ] || [ "$TERM" != "screen" ]) && [ "$termult" != "none" ]; then
   if [ "$termult" = "screen" ]; then
-     /usr/bin/screen -U -S sshscreen -d -R && exit
+     /usr/bin/screen -U -S defaultscreen -d -R && exit
   elif [ "$termult" = "tmux" ]; then
-     /usr/bin/tmux new-session -A -s sshtmux && exit
+     /usr/bin/tmux new-session -A -s defaulttmux && exit
   fi
 fi
